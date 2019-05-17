@@ -10,15 +10,17 @@ main()
 	state = OUT;
 	while ((c = getchar()) != EOF)
 	{
-		if ((c == ' ' || c == '\n' || c == '\t') && state == IN)
+		if ( !(c == ' ' || c == '\n' || c == '\t'))
+		{
+			state = IN;
+			putchar(c);
+		}
+		else if (state == IN)
 		{
 			putchar('\n');
 			state = OUT;
 		}
 		else
-		{
-			state = IN;
-			putchar(c);
-		}
+			;
 	}
 }
